@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "tv-show-app": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tv-show-app"
+    }
+  },
+  "defaultProject": "tv-show-app",
+  "cli": {
+    "analytics": "ad895526-6de6-49e1-a07e-800d279acdf5"
+  }
 }
