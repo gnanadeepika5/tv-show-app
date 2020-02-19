@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ITvShowsDisplay } from '../itv-shows-display';
+import { ITvShowsDisplay, IarrayTvShowsDisplay } from '../itv-shows-display';
+import { TvShowService } from '../tv-show.service';
+
 
 @Component({
   selector: 'app-tv-shows-display',
@@ -7,18 +9,11 @@ import { ITvShowsDisplay } from '../itv-shows-display';
   styleUrls: ['./tv-shows-display.component.css']
 })
 export class TvShowsDisplayComponent implements OnInit {
-  currentdata: ITvShowsDisplay
-  constructor() { 
-    this.currentdata.image ="test location",
-    this.currentdata.language = "EN",
-    this.currentdata.networkname = "ABC",
-    this.currentdata.rating = 4.5
-    this.currentdata.summary = "This is a test tvshow",
-    this.currentdata.schedule.days = 2,
-    this.currentdata.schedule.time = 17
-  }
-
+  currentdata: IarrayTvShowsDisplay;
+  constructor(private tvshowservice: TvShowService) { }
+  
   ngOnInit(): void {
+    this.tvshowservice.getShowDetails('girls').subscribe(data => this.currentdata = data);
   }
 
 }

@@ -1,10 +1,12 @@
 export interface ITvShowsDisplayData {
   show:{
+  id: number,
+  url: string,
   name: string,
   language: string,
   schedule:{
     time: number,
-    days: number
+    days: string[]
   },
   rating:{
     average: number
@@ -18,3 +20,6 @@ export interface ITvShowsDisplayData {
   summary: string
  }
 }
+
+// Create an interface of type array which extends from ITvShowsDisplaydata
+export interface IarrayTvShowsDisplayData extends Array<ITvShowsDisplayData>{}
