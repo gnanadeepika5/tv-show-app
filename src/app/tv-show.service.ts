@@ -25,20 +25,25 @@ export class TvShowService {
     var len = data.length;
     console.log("Number of shows with the given text in the name: " + len);
 
-    var tvShowDisplayArray: IarrayTvShowsDisplay = [
-      {
-        id: data[0].show.id,
+    var tvShowDisplayArray : IarrayTvShowsDisplay = new Array();
+
+    for (var i=0; i<len; i++)
+    {
+      tvShowDisplayArray.push({
+        id: data[i].show.id,
         url: `${environment.baseUrl}tvmaze.com/shows/${data[0].show.id}/${data[0].show.name}`,
-        name: data[0].show.name,
-        language: data[0].show.language,
-        scheduleTime: data[0].show.schedule.time,
-        scheduleDays: data[0].show.schedule.days,
-        rating: data[0].show.rating.average,
-        image: data[0].show.image.medium,
-        summary: data[0].show.summary,
-        networkname: data[0].show.summary
-      }
-    ]
+        name: data[i].show.name,
+        language: data[i].show.language,
+        scheduleTime: data[i].show.schedule.time,
+        scheduleDays: data[i].show.schedule.days,
+        rating: data[i].show.rating.average,
+        image: data[i].show.image != null ? data[i].show.image.medium : "https://dubsism.files.wordpress.com/2017/12/image-not-found.png",
+        summary: data[i].show.summary,
+        networkname: data[i].show.network != null ? data[i].show.network.name : "Not Found"
+      } as ITvShowsDisplay);
+    }
+
+
     return tvShowDisplayArray;
 
   }
