@@ -10,9 +10,9 @@
     <th>Summary</th>
   </tr>
   <tr *ngFor="let tvshowInfo of currentdata"> 
-    <td>{{tvshowInfo.name | lowercase}}</td>
-    <td>{{tvshowInfo.language | uppercase}}</td>
-    <td>{{tvshowInfo.schedule}}</td>
+    <td>{{tvshowInfo.name | uppercase}}</td>
+    <td>{{tvshowInfo.language}}</td>
+    <td>{{tvshowInfo.scheduleDays[0]}}</td>
     <td>{{tvshowInfo.rating}}</td>
     <td>{{tvshowInfo.networkname}}</td>
     <td><img [src]='tvshowInfo.image' sizes="60px" width="60px"/></td>

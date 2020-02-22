@@ -31,16 +31,19 @@ export class TvShowService {
     {
       tvShowDisplayArray.push({
         id: data[i].show.id,
-        url: `${environment.baseUrl}tvmaze.com/shows/${data[0].show.id}/${data[0].show.name}`,
+        url: `${environment.baseUrl}tvmaze.com/shows/${data[i].show.id}/${data[i].show.name}`,
         name: data[i].show.name,
         language: data[i].show.language,
         scheduleTime: data[i].show.schedule.time,
-        scheduleDays: data[i].show.schedule.days,
+        scheduleDays: data[i].show.schedule != null && data[i].show.schedule.days.length != 0 ? data[i].show.schedule.days : ["Not Found"],
+        //scheduleDays: ["xcxV", "dsfs"],
         rating: data[i].show.rating.average,
         image: data[i].show.image != null ? data[i].show.image.medium : "https://dubsism.files.wordpress.com/2017/12/image-not-found.png",
         summary: data[i].show.summary,
         networkname: data[i].show.network != null ? data[i].show.network.name : "Not Found"
       } as ITvShowsDisplay);
+
+      console.log(tvShowDisplayArray[i].scheduleDays[0]);
     }
 
 
