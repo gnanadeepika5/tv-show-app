@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { TvShowsDisplayComponent } from './tv-shows-display.component';
 
 describe('TvShowsDisplayComponent', () => {
@@ -8,7 +8,8 @@ describe('TvShowsDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TvShowsDisplayComponent ]
+      declarations: [ TvShowsDisplayComponent ],
+      imports: [HttpClientModule]
     })
     .compileComponents();
   }));
