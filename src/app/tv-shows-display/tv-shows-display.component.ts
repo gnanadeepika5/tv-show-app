@@ -14,7 +14,7 @@ export class TvShowsDisplayComponent implements OnInit {
   constructor(private tvshowservice: TvShowService) { }
   
   ngOnInit(): void {
-    this.tvshowservice.getShowDetails('marvel').subscribe(data => this.currentdata = data);
+    
   }
 
 }
