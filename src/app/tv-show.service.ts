@@ -5,19 +5,24 @@ import { ITvShowsDisplay, IarrayTvShowsDisplay } from './itv-shows-display';
 import { ITvShowsDisplayData, IarrayTvShowsDisplayData } from './itv-shows-display-data';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { ItvShowService } from './itv-show-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TvShowService {
+export class TvShowService  implements ItvShowService{
 
   constructor(private httpClient: HttpClient) { }
 
   // Function to get data from API link
-  getShowDetails(name: string):Observable<IarrayTvShowsDisplay>{
+  getShowDetails(searchText: string):Observable<IarrayTvShowsDisplay>{
+    let uriParams='';
+    if(typeof searchText === 'string'){
+      uriParams = `q=${searchText}`;
+    }
     console.log("In Get Show details function");
 
-    return this.httpClient.get<IarrayTvShowsDisplayData>(`${environment.baseUrl}api.tvmaze.com/search/shows?q=${name}&appId=${environment.appId}`).pipe(map(data => this.transformToIarrayTvShowsDisplay(data)));
+    return this.httpClient.get<IarrayTvShowsDisplayData>(`${environment.baseUrl}api.tvmaze.com/search/shows?${uriParams}&appId=${environment.appId}`).pipe(map(data => this.transformToIarrayTvShowsDisplay(data)));
   } 
 
   // Transform to ITvShowsDisplay function below
@@ -51,3 +56,13 @@ export class TvShowService {
   }
 
 }
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ITvShowsDisplay, IarrayTvShowsDisplay } from '../itv-shows-display';
 import { TvShowService } from '../tv-show.service';
+import { ItvShowService } from '../itv-show-service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { TvShowService } from '../tv-show.service';
   styleUrls: ['./tv-shows-display.component.css']
 })
 export class TvShowsDisplayComponent implements OnInit {
-  currentdata: IarrayTvShowsDisplay;
+ @Input() currentdata: IarrayTvShowsDisplay;
   constructor(private tvshowservice: TvShowService) { }
   
   ngOnInit(): void {
