@@ -11,6 +11,7 @@ import { ItvShowService } from '../itv-show-service';
 })
 export class TvShowsDisplayComponent implements OnInit {
  @Input() currentdata: IarrayTvShowsDisplay;
+ @Input() itemNotFound: string;
   constructor(private tvshowservice: TvShowService) { }
   
   ngOnInit(): void {

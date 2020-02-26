@@ -1,13 +1,15 @@
-<div style="text-align: center;">
+<div style="text-align: center; font-family: verdana;">
   <mat-toolbar color="primary">
     TV Show
   </mat-toolbar>
-  <div>Your Shows List is here</div>
-  <div>
-    <app-name-search (searchEvent)="doSearch($event)"></app-name-search>
+  <div style="font-size: 15px; line-height: 30px;">
+    <div>Enter the name of show that you want to search</div>
+    <div>
+      <app-name-search (searchEvent)="doSearch($event)"></app-name-search>
+    </div>
   </div>
   <mat-card color="secondary">
-  <app-tv-shows-display [currentdata]="tvshowsdisplay">
-  </app-tv-shows-display>
+    <app-tv-shows-display [currentdata]="tvshowsdisplay" [itemNotFound] = "errorMessage">
+    </app-tv-shows-display>
   </mat-card>
 </div>

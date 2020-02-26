@@ -11,6 +11,7 @@ export interface ITvShowsDisplay {
   image: string,
   summary: string,
   networkname: string,
+  webchannelname: string
 }
 
 // Create an interface of type array which extends from ITvShowsDisplay

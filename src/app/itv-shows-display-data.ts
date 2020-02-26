@@ -18,6 +18,10 @@ export interface ITvShowsDisplayData {
     {
       name:string
     },
+    webChannel:
+    {
+      name: string
+    },
     image:
     {
       medium:string
