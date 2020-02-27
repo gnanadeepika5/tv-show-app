@@ -1,24 +1,26 @@
 
-<table *ngIf="currentdata; else elseBlock" style="width:100%">
+<table class="movie-list" *ngIf="currentdata; else elseBlock" style="width:100%">
   <tr>
+    <th>Image</th>
     <th>Show Name</th>
     <th>Language</th>
     <th>Schedule</th>
     <th>Rating</th>
     <th>Network</th>
     <th>Web Channel</th>
-    <th>Image</th>
     <th>Summary</th>
   </tr>
   <tr *ngFor="let tvshowInfo of currentdata"> 
+    <td><img class="show-image" [src]='tvshowInfo.image'/></td>
     <td>{{tvshowInfo.name | uppercase}}</td>
     <td>{{tvshowInfo.language}}</td>
     <td>{{tvshowInfo.scheduleDays[0]}}</td>
     <td>{{tvshowInfo.rating}}</td>
     <td>{{tvshowInfo.networkname}}</td>
     <td>{{tvshowInfo.webchannelname}}</td>
-    <td><img [src]='tvshowInfo.image' sizes="60px" width="60px"/></td>
-    <td>{{tvshowInfo.summary}}</td>
+    <td>
+      <div id="show-summary">{{tvshowInfo.summary}}</div>
+    </td>
   </tr>
 </table>
 <ng-template #elseBlock>{{itemNotFound}}</ng-template>

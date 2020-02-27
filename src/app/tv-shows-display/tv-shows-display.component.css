@@ -1,0 +1,40 @@
+.movie-list, th {
+  border: 1px solid blue;
+
+}
+
+th {
+  background-color: blue;
+  font-size: larger;
+  color: white;
+}
+
+td {
+  border-bottom: 3px solid blue;
+  min-width: 75px;
+}
+
+tr {
+  height: 100px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr:hover {
+  background-color: silver;
+}
+
+table {
+  color: black;
+}
+
+.show-image {
+  max-height: 100px;
+}
+
+#show-summary {
+  max-height: 200px;
+  overflow: hidden;
+}
