@@ -14,7 +14,10 @@
     <td><img class="show-image" [src]='tvshowInfo.image'/></td>
     <td>{{tvshowInfo.name | uppercase}}</td>
     <td>{{tvshowInfo.language}}</td>
-    <td>{{tvshowInfo.scheduleDays[0]}}</td>
+    <td>
+      {{tvshowInfo.scheduleDays[0]}}
+      <span *ngIf="tvshowInfo.scheduleTime">@{{tvshowInfo.scheduleTime}}</span> 
+    </td>
     <td>{{tvshowInfo.rating}}</td>
     <td>{{tvshowInfo.networkname}}</td>
     <td>{{tvshowInfo.webchannelname}}</td>
