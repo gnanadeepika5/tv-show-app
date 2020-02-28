@@ -16,15 +16,22 @@ export class AppComponent {
 
   constructor(private tvshowservice: TvShowService){}
   doSearch(searchValue){
-    const userInput = searchValue.trim();
+    if(searchValue != 'invalid'){
+      const userInput = searchValue.trim();
         this.tvshowservice.getShowDetails(userInput).
         subscribe(data => {
-          if(data){
-            this.tvshowsdisplay = data;
-          }else{
-            this.errorMessage = "OOPS! Show name does not exist in our DB.";
-          }
-        });
+              if(data){
+                this.tvshowsdisplay = data;
+                this.errorMessage = null;
+              }else{
+                this.errorMessage = "OOPS! Show name does not exist in our DB.";
+                console.log(this.errorMessage);
+              }
+          });
+      }else{
+        // display should be nullified
+        this.tvshowsdisplay = null;
+      }
     }
 }
 

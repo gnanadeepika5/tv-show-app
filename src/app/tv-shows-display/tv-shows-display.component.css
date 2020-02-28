@@ -1,4 +1,4 @@
-.movie-list, th {
+/* .movie-list, th {
   border: 1px solid blue;
 
 }
@@ -37,4 +37,15 @@ table {
 #show-summary {
   max-height: 200px;
   overflow: hidden;
+} */
+mat-cell{
+  color: #002699;
+}
+mat-cell:first-of-type {
+  font-weight: bold;
+}
+.mat-header-cell{
+  font-weight: bold;
+  color: #002699;
+  text-transform: uppercase;
 }

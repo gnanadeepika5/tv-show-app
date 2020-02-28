@@ -16,9 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatFormFieldModule, MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-
-
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -39,7 +37,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    MatTableModule,
   ],
   providers: [TvShowService],
   bootstrap: [AppComponent]

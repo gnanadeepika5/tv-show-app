@@ -1,5 +1,5 @@
-
-<table class="movie-list" *ngIf="currentdata; else elseBlock" style="width:100%">
+<!--
+<table class="movie-list" *ngIf="(currentdata && !itemNotFound); else elseBlock" style="width:100%">
   <tr>
     <th>Image</th>
     <th>Show Name</th>
@@ -8,6 +8,7 @@
     <th>Rating</th>
     <th>Network</th>
     <th>Web Channel</th>
+    <th>Aired on</th>
     <th>Summary</th>
   </tr>
   <tr *ngFor="let tvshowInfo of currentdata"> 
@@ -17,14 +18,69 @@
     <td>
       {{tvshowInfo.scheduleDays[0]}}
       <span *ngIf="tvshowInfo.scheduleTime">@{{tvshowInfo.scheduleTime}}</span> 
+      <span *ngIf="tvshowInfo.scheduleTime != 'Anytime'; else elseBlock">{{tvshowInfo.scheduleDays[0]}} @ {{tvshowInfo.scheduleTime}}</span>
+      <ng-template #elseBlock>Anytime Anywhere on the web</ng-template>
     </td>
     <td>{{tvshowInfo.rating}}</td>
     <td>{{tvshowInfo.networkname}}</td>
     <td>{{tvshowInfo.webchannelname}}</td>
+    <td>{{tvshowInfo.telecastedOn}}</td>
     <td>
       <div id="show-summary">{{tvshowInfo.summary}}</div>
     </td>
   </tr>
 </table>
 <ng-template #elseBlock>{{itemNotFound}}</ng-template>
+-->
 
+<!--Using mat-table-->
+<div *ngIf='currentdata && !itemNotFound; else elseBlock'>
+  <table mat-table [dataSource]='currentdata' class="mat-elevation-z8" width="100%">
+
+    <ng-container matColumnDef='name'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px"><b>Show Name</b></mat-header-cell>
+      <mat-cell *matCellDef='let current'>{{current.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='language'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">Language</mat-header-cell>
+      <mat-cell *matCellDef='let current'>{{current.language}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='telecastedOn'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">Aired On</mat-header-cell>
+      <mat-cell *matCellDef='let current'>{{current.telecastedOn}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='scheduleTime'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">Telecast Time</mat-header-cell>
+      <mat-cell *matCellDef='let current'>{{current.scheduleTime}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='scheduleDays'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">Telecast Days</mat-header-cell>
+      <mat-cell *matCellDef='let current'>{{current.scheduleDays}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='image'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">Image</mat-header-cell>
+      <mat-cell *matCellDef='let current'><img [src]='current.image' width='80px'/></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='summary'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">Summary</mat-header-cell>
+      <mat-cell *matCellDef='let current'>{{current.summary}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef='url'>
+      <mat-header-cell *matHeaderCellDef style="font-size: 15px">For more info...</mat-header-cell>
+      <mat-cell *matCellDef='let current'><a href="{{current.url}}">...click here</a></mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+</div>
+<div>
+  <ng-template #elseBlock>{{itemNotFound}}</ng-template>
+</div>
