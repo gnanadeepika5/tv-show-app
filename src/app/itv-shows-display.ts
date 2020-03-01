@@ -10,8 +10,6 @@ export interface ITvShowsDisplay {
   rating: number,
   image: string,
   summary: string,
-  //networkname: string,
-  //webchannelname: string
   telecastedOn: string
 }
 

@@ -42,19 +42,13 @@ export class TvShowService  implements ItvShowService{
           language: data[i].show.language,
           scheduleTime: data[i].show.webChannel !=null ? 'AnyTime' : 
                       (data[i].show.schedule.time ? data[i].show.schedule.time : 'Not listed'),
-          //scheduleTime: data[i].show.network != null ? data[i].show.schedule.time : 'AnyTime',
-          // scheduleDays: data[i].show.schedule != null && data[i].show.schedule.days.length != 0 ? data[i].show.schedule.days : ["Not Found"],
-          //scheduleDays: data[i].show.network!=null ? data[i].show.schedule.days : 'AnyDay',
           scheduleDays: data[i].show.webChannel != null ? 'AnyDay' :
                       (data[i].show.schedule.days[0] == null ? 'Not listed' : data[i].show.schedule.days.map(day => day.substring(0,3))),
           rating: data[i].show.rating != null && data[i].show.rating.average != null? data[i].show.rating.average : "Not Rated",
           image: data[i].show.image != null ? data[i].show.image.medium : "https://dubsism.files.wordpress.com/2017/12/image-not-found.png",
           summary: data[i].show.summary!=null ? data[i].show.summary.replace(/<[^>]*>?/gm, '') : 'Summary not found',
-          // networkname: data[i].show.network != null ? data[i].show.network.name : "Not aired on TV network",
-          // webchannelname: data[i].show.webChannel != null ? data[i].show.webChannel.name : "Not aired on webchannel";
           telecastedOn: data[i].show.network!=null ? data[i].show.network.name : data[i].show.webChannel.name
         } as ITvShowsDisplay);
-        //console.log(" rating of the show:"+ data[i].show.rating + ":");
       }
       return tvShowDisplayArray;  
     }

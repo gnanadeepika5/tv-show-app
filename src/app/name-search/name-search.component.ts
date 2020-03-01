@@ -21,8 +21,6 @@ search = new FormControl('',[Validators.minLength(3)]);
     .subscribe((searchValue: string) => {
       if(!this.search.invalid && searchValue){
         this.searchEvent.emit(searchValue);
-        // const userInput = searchValue.trim();
-        // this.tvshowService.getShowDetails(userInput).subscribe(data => console.log(data));
       }
       if(this.search.invalid){
         this.searchEvent.emit('invalid');

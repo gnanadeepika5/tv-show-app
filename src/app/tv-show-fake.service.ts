@@ -27,8 +27,6 @@ export class TvShowFakeService implements ItvShowService{
         rating:6.9,
         image:'',
         summary:'dummy summary',
-        // networkname: 'hbo',
-        // webchannelname: 'netflix'
         telecastedOn: 'HBO'
         } as ITvShowsDisplay)
     }

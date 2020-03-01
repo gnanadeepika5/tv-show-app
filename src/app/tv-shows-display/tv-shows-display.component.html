@@ -1,38 +1,3 @@
-<!--
-<table class="movie-list" *ngIf="(currentdata && !itemNotFound); else elseBlock" style="width:100%">
-  <tr>
-    <th>Image</th>
-    <th>Show Name</th>
-    <th>Language</th>
-    <th>Schedule</th>
-    <th>Rating</th>
-    <th>Network</th>
-    <th>Web Channel</th>
-    <th>Aired on</th>
-    <th>Summary</th>
-  </tr>
-  <tr *ngFor="let tvshowInfo of currentdata"> 
-    <td><img class="show-image" [src]='tvshowInfo.image'/></td>
-    <td>{{tvshowInfo.name | uppercase}}</td>
-    <td>{{tvshowInfo.language}}</td>
-    <td>
-      {{tvshowInfo.scheduleDays[0]}}
-      <span *ngIf="tvshowInfo.scheduleTime">@{{tvshowInfo.scheduleTime}}</span> 
-      <span *ngIf="tvshowInfo.scheduleTime != 'Anytime'; else elseBlock">{{tvshowInfo.scheduleDays[0]}} @ {{tvshowInfo.scheduleTime}}</span>
-      <ng-template #elseBlock>Anytime Anywhere on the web</ng-template>
-    </td>
-    <td>{{tvshowInfo.rating}}</td>
-    <td>{{tvshowInfo.networkname}}</td>
-    <td>{{tvshowInfo.webchannelname}}</td>
-    <td>{{tvshowInfo.telecastedOn}}</td>
-    <td>
-      <div id="show-summary">{{tvshowInfo.summary}}</div>
-    </td>
-  </tr>
-</table>
-<ng-template #elseBlock>{{itemNotFound}}</ng-template>
--->
-
 <!--Using mat-table-->
 <div *ngIf='currentdata && !itemNotFound; else elseBlock'>
   <table mat-table [dataSource]='currentdata' class="mat-elevation-z8" width="100%">
